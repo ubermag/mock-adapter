@@ -5,7 +5,6 @@ channels:
 
 dependencies:
   - pip
-  - oommf
   - pip:
     - git+https://github.com/ubermag/ubermagutil.git
     - git+https://github.com/ubermag/ubermagtable.git
@@ -13,5 +12,3 @@ dependencies:
     - git+https://github.com/ubermag/micromagneticmodel.git
     - git+https://github.com/ubermag/micromagneticdata.git
     - git+https://github.com/ubermag/micromagnetictests.git
-    - git+https://github.com/ubermag/oommfc.git
-    - git+https://github.com/ubermag/mag2exp.git
