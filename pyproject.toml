@@ -19,7 +19,7 @@ authors = [
 ]
 
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Education",
     "Intended Audience :: Developers",
     "Intended Audience :: Science/Research",
@@ -107,6 +107,8 @@ include = ["ubermagcalculatorbase*"]
 [tool.ubermag]
 doi = "10.5281/zenodo.3539479"
 copyright_holder = "Ubermag developers"
+contributors = [
+]
 about = """
 - Base classes for external calculator packages. Adapter packages must subclass these.
 
