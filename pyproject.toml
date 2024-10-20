@@ -53,7 +53,10 @@ homepage = "https://ubermag.github.io"
 documentation = "https://ubermag.github.io/documentation/ubermagcalculatorbase"
 repository = "https://github.com/ubermag/ubermagcalculatorbase"
 
-
+[project.entry-points."micromagneticdata.output_collecting.Drive"]
+ubermagcalculatorbase = "ubermagcalculatorbase.mock_adapter._output_collecting_util.mock_drive:MockCalculatorDrive"
+[project.entry-points."micromagneticdata.output_collecting.read_table"]
+ubermagcalculatorbase = "ubermagcalculatorbase.mock_adapter._output_collecting_util.read_table:table_from_file"
 
 
 [tool.coverage.run]
