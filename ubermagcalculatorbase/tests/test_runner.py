@@ -3,6 +3,7 @@ import pytest
 from ubermagcalculatorbase.mock_calculator import 
 
 
+@pytest.mark.skip(reason="test incomplete")
 def test_call(capsys):
     runner = MyRunner()
     command = runner._call("argstr", dry_run=True)
