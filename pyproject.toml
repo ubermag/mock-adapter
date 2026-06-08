@@ -7,8 +7,9 @@ name = "ubermagcalculatorbase"
 version = "0.1.0"
 description = "Base class for external calculators and mock calculator"
 readme = "README.md"
-requires-python = ">=3.8"
-license = {file = "LICENSE"}
+requires-python = ">=3.9"
+license = "BSD-3-Clause"
+license-files = ["LICENSE"]
 
 authors = [
     {name = "Martin Lang"},
@@ -23,7 +24,6 @@ classifiers = [
     "Intended Audience :: Education",
     "Intended Audience :: Developers",
     "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: BSD License",
     "Natural Language :: English",
     "Operating System :: MacOS",
     "Operating System :: Microsoft :: Windows",
@@ -45,7 +45,8 @@ dev = [
     "nbval",
     "pre-commit",
     "pytest-cov",
-    "twine"
+    "twine",
+    "tomli; python_version < '3.11'",
 ]
 
 [project.urls]
@@ -53,10 +54,7 @@ homepage = "https://ubermag.github.io"
 documentation = "https://ubermag.github.io/documentation/ubermagcalculatorbase"
 repository = "https://github.com/ubermag/ubermagcalculatorbase"
 
-[project.entry-points."micromagneticdata.output_collecting.Drive"]
-ubermagcalculatorbase = "ubermagcalculatorbase.mock_adapter._output_collecting_util.mock_drive:MockCalculatorDrive"
-[project.entry-points."micromagneticdata.output_collecting.read_table"]
-ubermagcalculatorbase = "ubermagcalculatorbase.mock_adapter._output_collecting_util.read_table:table_from_file"
+
 
 
 [tool.coverage.run]
