@@ -3,8 +3,56 @@ import json
 
 import discretisedfield as df
 import pytest
-
 import micromagneticmodel as mm
+
+from ubermagcalculatorbase.base import Driver, ExternalDriver
+
+
+class MyDriver(Driver):
+    _allowed_attributes = ["arg1", "arg2"]
+
+    def drive(self, system):  # A simple drive method
+        return system
+
+    @property
+    def _x(self):
+        return "independent_variable"
+
+
+class MyExternalDriver(ExternalDriver):
+    _allowed_attributes = ["arg1", "arg2"]
+
+    @property
+    def _x(self):
+        return "x"
+
+    def schedule_kwargs_setup(self, schedule_kwargs):
+        pass
+
+    def drive_kwargs_setup(self, drive_kwargs):
+        pass
+
+    def _check_system(self, system):
+        pass
+
+    def _write_input_files(self, system, **kwargs):
+        with open(f"{system.name}.input", "w", encoding="utf-8") as f:
+            f.write(str(-1))  # factor -1 used to invert magnetisation direction in call
+
+    def _call(self, system, runner, **kwargs):
+        with open(f"{system.name}.input", encoding="utf-8") as f:
+            factor = int(f.read())
+        (factor * system.m).to_file("output.omf")
+
+    def _schedule_commands(self, system, runner):
+        # Python is used to test/simulate schedule during tests because there
+        # typically is no scheduling system and Python is always available.
+        # Therefore, we return a Python comment that can be added to the
+        # schedule script without breaking the execution.
+        return ["# run command line"]
+
+    def _read_data(self, system):
+        system.m = df.Field.from_file("output.omf")
 
 
 def test_driver():
@@ -47,15 +95,15 @@ def test_external_driver(tmp_path):
     assert (tmp_path / system.name / "drive-1" / "info.json").exists()
     assert (tmp_path / system.name / "drive-1" / "job.sh").exists()
 
-    # Schedule header from file and runtime error during schedule.
+    # Schedule header from file and runtime error during scheduling.
     with (tmp_path / "header.sh").open("wt", encoding="utf-8") as f:
         f.write("import sys\nsys.exit(1)")
     with pytest.raises(RuntimeError):
         driver.schedule(
             system, "python", str(tmp_path / "header.sh"), dirname=str(tmp_path)
         )
-        assert (tmp_path / system.name / "drive-2" / "macrospin.input").exists()
-        assert (tmp_path / system.name / "drive-2" / "info.json").exists()
-        assert (tmp_path / system.name / "drive-2" / "job.sh").exists()
+    assert (tmp_path / system.name / "drive-2" / "macrospin.input").exists()
+    assert (tmp_path / system.name / "drive-2" / "info.json").exists()
+    assert (tmp_path / system.name / "drive-2" / "job.sh").exists()
 
     assert len(list((tmp_path / system.name).glob("drive*"))) == 3

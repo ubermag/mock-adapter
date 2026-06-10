@@ -1,7 +1,23 @@
+import subprocess as sp
+
 import pytest
 
-#from ubermagcalculatorbase.mock_calculator import 
+from ubermagcalculatorbase.base import ExternalRunner
 
+class MyRunner(ExternalRunner):
+    @property
+    def package_name(self):
+        return "my_package"
+
+    def _call(self, argstr, need_stderr=False, dry_run=False, returncode=0, **kwargs):
+        if dry_run:
+            return ["my_package", argstr, "command", "line"]
+        return sp.CompletedProcess(
+            argstr,
+            returncode=returncode,
+            stdout=b"output",
+            stderr=b"error",
+        )
 
 @pytest.mark.skip(reason="test incomplete")
 def test_call(capsys):
