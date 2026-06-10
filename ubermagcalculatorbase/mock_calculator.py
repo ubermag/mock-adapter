@@ -22,7 +22,7 @@ def read_config(path) -> dict:
 
 def init_table(path, iteration_name, iteration_unit, extra_columns='', extra_column_units=''):
     with open(path / TABLE_NAME, "w") as f:
-        f.write(f"{iteration_name},energy,m_x,m_y,m_z{extra_columns}\n")
+        f.write(f"{iteration_name},energy,mx,my,mz{extra_columns}\n")
         f.write(f"{iteration_unit},J,,,{extra_column_units}\n")
 
 
@@ -67,7 +67,7 @@ def fake_llg(config, path):
     H = df.Field(mesh=m.mesh, nvdim=3, value=config['H'])
     precession_period = 1e-9  # s
     damping_angles = H.angle(m)
-    for i in range(n):
+    for i in range(1, n+1):
         # We rotate the external field direction in the directon of the current
         # magnetic field (and renormalise to Ms) with the amount of rotation given by
         # alpha_factor; the deviation between m and H decreases as a sigmoid function,
