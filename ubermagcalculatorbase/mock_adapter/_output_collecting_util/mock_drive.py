@@ -3,7 +3,6 @@ import micromagneticdata as mdata
 
 class MockCalculatorDrive(mdata.Drive):
     def __init__(self, name, number, dirname="./", x=None, use_cache=False, **kwargs):
-        print("we hare here")
         super().__init__(name, number, dirname, x, use_cache, **kwargs)
 
     @mdata.AbstractDrive.x.setter
