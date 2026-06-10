@@ -12,6 +12,6 @@ two-fold:
 
 THIS PACKAGE IS NOT INTENDED FOR UBERMAG USERS WHO WANT TO RUN MICROMAGNETIC SIMULATIONS!
 """
-from .mock_driver import MockMinDriver as MockMinDriver, MockTimeDriver as MockTimeDriver
+from .mock_driver import MinDriver as MinDriver, TimeDriver as TimeDriver
 from .mock_runner import MockRunner as MockRunner
 from .scripts import input_script as input_script

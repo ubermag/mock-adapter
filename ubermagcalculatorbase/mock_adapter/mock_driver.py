@@ -8,7 +8,7 @@ from ubermagcalculatorbase.base import ExternalDriver
 from ubermagcalculatorbase import mock_adapter
 
 
-class MockDriver(ExternalDriver):
+class Driver(ExternalDriver):
 
     @abc.abstractmethod
     def _checkargs(self, kwargs):
@@ -60,7 +60,7 @@ class MockDriver(ExternalDriver):
         # system.table = ut.Table.fromfile(f"{system.name}.odt", x=self._x)
 
 
-class MockMinDriver(MockDriver):
+class MinDriver(Driver):
     _allowed_attributes = [
         "convergence_mode",  # possible values: lin [default], log
         "save_steps",  # possible values: true, false [default]
@@ -82,7 +82,7 @@ class MockMinDriver(MockDriver):
         return "iteration"
 
 
-class MockTimeDriver(MockDriver):
+class TimeDriver(Driver):
     _allowed_attributes = []
 
     def _checkargs(self, kwargs):

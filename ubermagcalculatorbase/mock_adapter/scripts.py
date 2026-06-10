@@ -5,11 +5,11 @@ def input_script(driver, system, **kwargs):
     settings = {
         "H": system.energy.zeeman.H,
     }
-    if isinstance(driver, mock_adapter.MockMinDriver):
+    if isinstance(driver, mock_adapter.MinDriver):
         settings["mode"] = "min"
         settings["convergence"] = kwargs.get("convergence", "linear")
         settings["save_steps"] = kwargs.get("save_steps", False)
-    elif isinstance(driver, mock_adapter.MockTimeDriver):
+    elif isinstance(driver, mock_adapter.TimeDriver):
         settings["mode"] = "llg"
         settings["t"] = kwargs["t"]
         settings["n"] = kwargs["n"]
