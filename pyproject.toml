@@ -35,7 +35,9 @@ classifiers = [
 ]
 
 dependencies = [
-    "micromagneticmodel>=0.64.0"
+    "micromagneticdata",
+    "micromagneticmodel>=0.64.0",
+    "ubermagtable",
 ]
 
 [project.optional-dependencies]
