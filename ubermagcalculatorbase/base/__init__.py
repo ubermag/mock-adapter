@@ -10,6 +10,6 @@ of abstract methods, which provide calculator-specific details.
 The Runner object is a lower-level object that is responsible for the communication with
 the external software. Users of Ubermag do generally not directly interact with it.
 """
-from .driver import ExternalDriver as ExternalDriver
+from .driver import Driver as Driver, ExternalDriver as ExternalDriver
 from .evolver import Evolver as Evolver
 from .runner import ExternalRunner as ExternalRunner

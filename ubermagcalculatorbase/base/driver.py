@@ -10,7 +10,20 @@ import ubermagutil as uu
 import micromagneticmodel as mm
 
 
-class ExternalDriver(mm.abstract.Abstract):
+class Driver(mm.abstract.Abstract):
+    """An abstract class for deriving drivers."""
+
+    @abc.abstractmethod
+    def drive(self, system, **kwargs):
+        """Drives the system in phase space."""
+
+    @property
+    @abc.abstractmethod
+    def _x(self):
+        """Independent variable."""
+
+
+class ExternalDriver(Driver):
     """Base class for existing external simulation packages (e.g. OOMMF, mumax3)."""
 
     @property
