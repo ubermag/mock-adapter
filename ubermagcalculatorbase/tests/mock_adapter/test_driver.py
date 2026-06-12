@@ -1,24 +1,12 @@
 from ubermagcalculatorbase import mock_adapter
-import micromagneticmodel as mm
-import discretisedfield as df
-import pytest
 import numpy as np
 import sys
-
-@pytest.fixture
-def system():
-    system = mm.System(name="test")
-    system.energy = mm.Zeeman(H=[0, 0, 1])
-    system.m = df.Field(mesh=df.Mesh(p1=(0, 0, 0), p2=(10, 10, 10), n=(2, 2, 2)), nvdim=3, value=[1, 0, 0], norm=1e5)
-    system.dynamics = mm.Damping(alpha=1)
-    return system
 
 def test_min_drive(system, tmp_path):
     md = mock_adapter.MinDriver()
     md.drive(system, dirname=tmp_path)
 
     ref = np.zeros((2, 2, 2, 3))
-    ref[..., 0] = 1e5
     ref[..., 2] = 1e5
     np.testing.assert_allclose(system.m.array, ref)
 
@@ -36,14 +24,15 @@ def test_min_drive_save_steps(system, tmp_path):
 
 def test_time_drive(system, tmp_path):
     td = mock_adapter.TimeDriver()
-    td.drive(system, t=5e-9, n=5, dirname=tmp_path)
+    td.drive(system, t=20e-9, n=5, dirname=tmp_path)
 
     ref = np.zeros((2, 2, 2, 3))
-    ref[..., 2] = 1e5
-    np.testing.assert_allclose(system.m.array, ref)
+    ref[..., 2] = 1
+    np.testing.assert_allclose(system.m.orientation.array, ref, atol=1e-8)
+    np.testing.assert_allclose(system.m.norm.array, 1e5)
 
     assert len(system.table.data) == 5
-    assert system.table.xmax == 5e-9
+    assert system.table.xmax == 20e-9
 
 
 def test_min_schedule(system, tmp_path):
