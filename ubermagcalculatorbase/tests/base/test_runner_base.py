@@ -19,7 +19,6 @@ class MyRunner(ExternalRunner):
             stderr=b"error",
         )
 
-@pytest.mark.skip(reason="test incomplete")
 def test_call(capsys):
     runner = MyRunner()
     command = runner._call("argstr", dry_run=True)
