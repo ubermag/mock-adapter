@@ -8,9 +8,9 @@ class MockCalculatorDrive(mdata.Drive):
     @mdata.AbstractDrive.x.setter
     def x(self, value):
         if value is None:
-            if self.info["driver"] == "MockTimeDriver":
+            if self.info["driver"] == "TimeDriver":
                 self._x = "t"
-            elif self.info["driver"] == "MockMinDriver":
+            elif self.info["driver"] == "MinDriver":
                 self._x = "iteration"
         else:
             # self.table reads self.x so self._x has to be defined first
