@@ -1,8 +1,9 @@
+import micromagneticmodel as mm
 import pytest
 
-from mock_adapter.scripts import input_script
 import mock_adapter
-import micromagneticmodel as mm
+from mock_adapter.scripts import input_script
+
 
 def test_script_min(system):
     script = input_script(mock_adapter.MinDriver(), system)
@@ -13,6 +14,7 @@ def test_script_min(system):
     assert script["H"] == [0, 0, 1]
 
     assert "alpha" not in script
+
 
 def test_script_min_save_steps(system):
     script = input_script(mock_adapter.MinDriver(save_steps=True), system)

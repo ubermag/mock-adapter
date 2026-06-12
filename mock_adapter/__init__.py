@@ -10,13 +10,14 @@ two-fold:
 - The `mock_adapter` is used to generate data for `micromagneticdata` and `ubermagtable`
   without the need to have an actual external calculator package.
 
-THIS PACKAGE IS NOT INTENDED FOR UBERMAG USERS WHO WANT TO RUN MICROMAGNETIC SIMULATIONS!
+THIS PACKAGE IS NOT INTENDED FOR UBERMAG USERS WHO WANT TO RUN MICROMAGNETIC SIMULATIONS
 """
-from .mock_driver import MinDriver as MinDriver, TimeDriver as TimeDriver
-from .mock_runner import MockCalculatorRunner as MockCalculatorRunner
 
 import pytest
 
+from .mock_driver import MinDriver as MinDriver
+from .mock_driver import TimeDriver as TimeDriver
+from .mock_runner import MockCalculatorRunner as MockCalculatorRunner
 
 
 def test():
@@ -31,6 +32,4 @@ def test():
     >>> # mmock_adapter.test()
 
     """
-    return pytest.main(
-        ["-v", "--pyargs", "mock_adapter", "-l"]
-    )  # pragma: no cover
+    return pytest.main(["-v", "--pyargs", "mock_adapter", "-l"])  # pragma: no cover

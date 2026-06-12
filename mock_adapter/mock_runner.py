@@ -1,6 +1,6 @@
+import shlex
 import subprocess as sp
 import sys
-import shlex
 
 from micromagneticmodel import adapter_base
 
@@ -21,12 +21,7 @@ class MockCalculatorRunner(adapter_base.ExternalRunner):
         # `mock_calculator` is a module in `ubermagcalculatorbase` and can be executed
         # in a subprocess using the same python interpreter as the running ubermag
         # session.
-        command = [
-            sys.executable,
-            "-m",
-            "mock_adapter.mock_calculator",
-            argstr
-        ]
+        command = [sys.executable, "-m", "mock_adapter.mock_calculator", argstr]
 
         # `need_stderr` is ignored in this implementation, and stdout and stderr are
         # always captured.

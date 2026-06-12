@@ -1,6 +1,9 @@
-import mock_adapter
-import numpy as np
 import sys
+
+import numpy as np
+
+import mock_adapter
+
 
 def test_min_drive(system, tmp_path):
     md = mock_adapter.MinDriver()
@@ -40,15 +43,35 @@ def test_min_schedule(system, tmp_path):
     md.schedule(system, dirname=tmp_path, cmd="python", header="#SBATCH --time 1:00")
 
     job_script = (tmp_path / system.name / "drive-0" / "job.sh").read_text()
-    assert f"{sys.executable} -m mock_adapter.mock_calculator {system.name}.input.json" in job_script
+    assert (
+        f"{sys.executable} -m mock_adapter.mock_calculator {system.name}.input.json"
+        in job_script
+    )
 
-    assert '"mode": "min"' in (tmp_path / system.name / "drive-0" / "test.input.json").read_text()
+    assert (
+        '"mode": "min"'
+        in (tmp_path / system.name / "drive-0" / "test.input.json").read_text()
+    )
+
 
 def test_time_schedule(system, tmp_path):
     td = mock_adapter.TimeDriver()
-    td.schedule(system, t=25e-12, n=10, dirname=tmp_path, cmd="python", header="#SBATCH --time 1:00")
+    td.schedule(
+        system,
+        t=25e-12,
+        n=10,
+        dirname=tmp_path,
+        cmd="python",
+        header="#SBATCH --time 1:00",
+    )
 
     job_script = (tmp_path / system.name / "drive-0" / "job.sh").read_text()
-    assert f"{sys.executable} -m mock_adapter.mock_calculator {system.name}.input.json" in job_script
+    assert (
+        f"{sys.executable} -m mock_adapter.mock_calculator {system.name}.input.json"
+        in job_script
+    )
 
-    assert '"mode": "llg"' in (tmp_path / system.name / "drive-0" / "test.input.json").read_text()
+    assert (
+        '"mode": "llg"'
+        in (tmp_path / system.name / "drive-0" / "test.input.json").read_text()
+    )

@@ -1,6 +1,7 @@
-from mock_adapter import MockCalculatorRunner
-import sys
 import re
+import sys
+
+from mock_adapter import MockCalculatorRunner
 
 
 def test_name():
@@ -21,4 +22,7 @@ def test_call():
     res = runner._call("inputfile.does-not-exist")
     assert res.returncode == 1
     assert "FileNotFoundError" in res.stderr.decode("utf-8")
-    assert re.search("No such file or directory:.*inputfile.does-not-exist", res.stderr.decode("utf-8"))
+    assert re.search(
+        "No such file or directory:.*inputfile.does-not-exist",
+        res.stderr.decode("utf-8"),
+    )

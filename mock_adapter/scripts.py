@@ -1,6 +1,7 @@
-import mock_adapter
-import numpy as np
 import micromagneticmodel as mm
+import numpy as np
+
+import mock_adapter
 
 
 def input_script(driver, system, **kwargs):
@@ -29,11 +30,18 @@ def _process_energy_equation(energy):
         if not isinstance(term, mm.Zeeman):
             raise ValueError(f"Energy term {term} not supported.")
         elif "H" in result:
-            raise ValueError(f"Only a single Zeeman term is supported, got H={result['H']} and {term}.")
-        elif not isinstance(term.H, (list, tuple, np.ndarray) or not np.atleast_1d(term.H).shape == (3,)):
+            raise ValueError(
+                "Only a single Zeeman term is supported, "
+                f"got H={result['H']} and {term}."
+            )
+        elif not isinstance(term.H, (list, tuple, np.ndarray)) or not np.atleast_1d(
+            term.H
+        ).shape == (3,):
             # TODO: the shape check might not be required as micromagneticmodel.Zeeman
             # may fully cover that.
-            raise TypeError(f"Zeeman H must be a single vector of length 3, got {term.H}")
+            raise TypeError(
+                f"Zeeman H must be a single vector of length 3, got {term.H}"
+            )
         # convert to a list of builtin.float to allow json serialisation
         # this will also cover all cases where elements of H are of the wrong type
         result["H"] = list(map(float, term.H))

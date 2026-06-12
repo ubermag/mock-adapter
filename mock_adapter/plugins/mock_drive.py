@@ -24,11 +24,11 @@ class MockCalculatorDrive(mdata.Drive):
 
     @property
     def _table_path(self):
-        return self.drive_path / f"output.csv"
+        return self.drive_path / "output.csv"
 
     @property
     def _step_file_glob(self):
-        return self.drive_path.glob(f"m_*.hdf5")
+        return self.drive_path.glob("m_*.hdf5")
 
     @property
     def _m0_path(self):

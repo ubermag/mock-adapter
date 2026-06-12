@@ -1,5 +1,6 @@
 import json
 import pathlib
+
 import discretisedfield as df
 from micromagneticmodel import adapter_base
 
@@ -13,9 +14,11 @@ class _Driver(adapter_base.ExternalDriver):
 
     def _write_input_files(self, system, **kwargs):
         with open(self._inputfilename(system), "w", encoding="utf-8") as f:
-            json.dump(mock_adapter.scripts.input_script(self, system, **kwargs), f, indent=4)
+            json.dump(
+                mock_adapter.scripts.input_script(self, system, **kwargs), f, indent=4
+            )
 
-        system.m.to_file('m0.hdf5')
+        system.m.to_file("m0.hdf5")
 
     def _call(self, system, runner, verbose=1, **kwargs):
         if runner is None:
@@ -66,6 +69,7 @@ class MinDriver(_Driver):
         If set to True intermediate steps 1-9 of the energy minimisation are saved.
         If False only the final step 10 is saved.
     """
+
     _allowed_attributes = [
         "save_steps",  # possible values: true, false [default]
     ]
@@ -95,6 +99,7 @@ class TimeDriver(_Driver):
     speed of relaxation. A precession term in the dynamics equation is ignored; instead
     precession is hard-coded with period 1ns.
     """
+
     _allowed_attributes = []
 
     def schedule_kwargs_setup(self, schedule_kwargs):
