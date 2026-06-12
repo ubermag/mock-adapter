@@ -58,9 +58,9 @@ documentation = "https://ubermag.github.io/documentation/mock_adapter"
 repository = "https://github.com/ubermag/mock_adapter"
 
 [project.entry-points."micromagneticdata.plugins.CalculatorDrive"]
-mock_adapter = "mock_adapter._output_collecting_util.mock_drive:MockCalculatorDrive"
+mock_adapter = "mock_adapter.plugins.mock_drive:MockCalculatorDrive"
 [project.entry-points."micromagneticdata.plugins.read_table"]
-mock_adapter = "mock_adapter._output_collecting_util.read_table:table_from_file"
+mock_adapter = "mock_adapter.plugins.read_table:table_from_file"
 
 
 [tool.coverage.run]

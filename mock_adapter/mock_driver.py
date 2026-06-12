@@ -4,7 +4,7 @@ import discretisedfield as df
 from micromagneticmodel import adapter_base
 
 import mock_adapter
-from mock_adapter._output_collecting_util import table_from_file
+from mock_adapter.plugins import table_from_file
 
 
 class _Driver(adapter_base.ExternalDriver):

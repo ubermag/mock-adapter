@@ -2,7 +2,7 @@ import pytest
 
 from ubermagtable.tests.test_table import *  # noqa: F403
 
-from mock_adapter._output_collecting_util import table_from_file
+from mock_adapter.plugins import table_from_file
 import mock_adapter
 import micromagneticmodel as mm
 
