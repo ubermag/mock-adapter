@@ -1,7 +1,7 @@
 import pytest
 
-from ubermagcalculatorbase.mock_adapter.scripts import input_script
-from ubermagcalculatorbase import mock_adapter
+from mock_adapter.scripts import input_script
+import mock_adapter
 import micromagneticmodel as mm
 
 def test_script_min(system):

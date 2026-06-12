@@ -24,7 +24,7 @@ class MockCalculatorRunner(adapter_base.ExternalRunner):
         command = [
             sys.executable,
             "-m",
-            "ubermagcalculatorbase.mock_calculator",
+            "mock_adapter.mock_calculator",
             argstr
         ]
 

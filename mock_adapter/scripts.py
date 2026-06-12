@@ -1,4 +1,4 @@
-from ubermagcalculatorbase import mock_adapter
+import mock_adapter
 import numpy as np
 import micromagneticmodel as mm
 

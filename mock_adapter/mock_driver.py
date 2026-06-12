@@ -3,8 +3,8 @@ import pathlib
 import discretisedfield as df
 from micromagneticmodel import adapter_base
 
-from ubermagcalculatorbase import mock_adapter
-from ubermagcalculatorbase.mock_adapter._output_collecting_util import table_from_file
+import mock_adapter
+from mock_adapter._output_collecting_util import table_from_file
 
 
 class _Driver(adapter_base.ExternalDriver):

@@ -15,3 +15,23 @@ THIS PACKAGE IS NOT INTENDED FOR UBERMAG USERS WHO WANT TO RUN MICROMAGNETIC SIM
 from .mock_driver import MinDriver as MinDriver, TimeDriver as TimeDriver
 from .mock_runner import MockCalculatorRunner as MockCalculatorRunner
 from .scripts import input_script as input_script
+
+import pytest
+
+
+
+def test():
+    """Run all package tests.
+
+    Examples
+    --------
+    1. Run all tests.
+
+    >>> import mock_adapter
+    ...
+    >>> # mmock_adapter.test()
+
+    """
+    return pytest.main(
+        ["-v", "--pyargs", "mock_adapter", "-l"]
+    )  # pragma: no cover

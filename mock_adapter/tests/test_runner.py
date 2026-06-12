@@ -1,4 +1,4 @@
-from ubermagcalculatorbase.mock_adapter import MockCalculatorRunner
+from mock_adapter import MockCalculatorRunner
 import sys
 import re
 
@@ -11,7 +11,7 @@ def test_call_dry_run():
     runner = MockCalculatorRunner()
 
     cmd = runner._call("input.json", dry_run=True)
-    assert cmd == f"{sys.executable} -m ubermagcalculatorbase.mock_calculator input.json"
+    assert cmd == f"{sys.executable} -m mock_adapter.mock_calculator input.json"
 
 
 def test_call():

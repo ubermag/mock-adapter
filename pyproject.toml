@@ -3,7 +3,7 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ubermagcalculatorbase"
+name = "mock-adapter"
 version = "0.1.0"
 description = "Base class for external calculators and mock calculator"
 readme = "README.md"
@@ -35,6 +35,7 @@ classifiers = [
 ]
 
 dependencies = [
+    "discretisedfield",
     "micromagneticdata",
     "micromagneticmodel>=0.64.0",
     "ubermagtable",
@@ -53,17 +54,17 @@ dev = [
 
 [project.urls]
 homepage = "https://ubermag.github.io"
-documentation = "https://ubermag.github.io/documentation/ubermagcalculatorbase"
-repository = "https://github.com/ubermag/ubermagcalculatorbase"
+documentation = "https://ubermag.github.io/documentation/mock_adapter"
+repository = "https://github.com/ubermag/mock_adapter"
 
-[project.entry-points."micromagneticdata.output_collecting.Drive"]
-ubermagcalculatorbase = "ubermagcalculatorbase.mock_adapter._output_collecting_util.mock_drive:MockCalculatorDrive"
-[project.entry-points."micromagneticdata.output_collecting.read_table"]
-ubermagcalculatorbase = "ubermagcalculatorbase.mock_adapter._output_collecting_util.read_table:table_from_file"
+[project.entry-points."micromagneticdata.plugins.CalculatorDrive"]
+mock_adapter = "mock_adapter._output_collecting_util.mock_drive:MockCalculatorDrive"
+[project.entry-points."micromagneticdata.plugins.read_table"]
+mock_adapter = "mock_adapter._output_collecting_util.read_table:table_from_file"
 
 
 [tool.coverage.run]
-omit = ["ubermagcalculatorbase/tests/*"]
+omit = ["mock_adapter/tests/*"]
 
 [tool.ruff.lint]
 ignore-init-module-imports = true  # do not remove unused imports in __init__ and warn instead
@@ -90,7 +91,7 @@ ignore = [
 ]
 
 [tool.ruff.lint.isort]
-known-local-folder = ["ubermagcalculatorbase"]
+known-local-folder = ["mock_adapter"]
 
 [tool.ruff.lint.per-file-ignores]
 "*.ipynb" = [
@@ -106,7 +107,7 @@ filterwarnings = [
 ]
 
 [tool.setuptools.packages.find]
-include = ["ubermagcalculatorbase*"]
+include = ["mock_adapter"]
 
 # to define additional information we use a custom table
 # see: https://www.python.org/dev/peps/pep-0518/#tool-table

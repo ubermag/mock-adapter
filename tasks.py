@@ -22,16 +22,16 @@ test_collection = Collection("test")
 @task
 def unittest(c):
     """Run unittests."""
-    import ubermagcalculatorbase
+    import mock_adapter
 
-    result = ubermagcalculatorbase.test()
+    result = mock_adapter.test()
     raise Exit(code=result)
 
 
 @task
 def coverage(c):
     """Run unittests with coverage."""
-    result = pytest.main(["-v", "--cov", "ubermagcalculatorbase",
+    result = pytest.main(["-v", "--cov", "mock_adapter",
                           "--cov-report", "xml"])
     raise Exit(code=result)
 
@@ -40,7 +40,7 @@ def coverage(c):
 def docs(c):
     """Run doctests."""
     result = pytest.main(["-v", "--doctest-modules", "--ignore",
-                          "ubermagcalculatorbase/tests", "ubermagcalculatorbase"])
+                          "mock_adapter/tests", "mock_adapter"])
     raise Exit(code=result)
 
 
