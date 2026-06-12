@@ -7,8 +7,7 @@ def input_script(driver, system, **kwargs):
     settings = _process_energy_equation(system.energy)
     if isinstance(driver, mock_adapter.MinDriver):
         settings["mode"] = "min"
-        settings["convergence"] = kwargs.get("convergence", "linear")
-        settings["save_steps"] = kwargs.get("save_steps", False)
+        settings["save_steps"] = getattr(driver, "save_steps", False)
     elif isinstance(driver, mock_adapter.TimeDriver):
         settings["mode"] = "llg"
         settings["t"] = kwargs["t"]

@@ -15,7 +15,7 @@ def test_script_min(system):
     assert "alpha" not in script
 
 def test_script_min_save_steps(system):
-    script = input_script(mock_adapter.MinDriver(), system, save_steps=True)
+    script = input_script(mock_adapter.MinDriver(save_steps=True), system)
     assert isinstance(script, dict)
 
     assert script["mode"] == "min"
