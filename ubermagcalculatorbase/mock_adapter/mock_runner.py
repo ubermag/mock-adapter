@@ -1,10 +1,11 @@
-from ubermagcalculatorbase.base import ExternalRunner
 import subprocess as sp
 import sys
 import shlex
 
+from micromagneticmodel import adapter_base
 
-class MockCalculatorRunner(ExternalRunner):
+
+class MockCalculatorRunner(adapter_base.ExternalRunner):
     @property
     def package_name(self):
         """Name of the calculator.

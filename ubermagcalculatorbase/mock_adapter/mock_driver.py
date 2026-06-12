@@ -1,13 +1,13 @@
 import json
 import pathlib
 import discretisedfield as df
+from micromagneticmodel import adapter_base
 
-from ubermagcalculatorbase.base import ExternalDriver
 from ubermagcalculatorbase import mock_adapter
 from ubermagcalculatorbase.mock_adapter._output_collecting_util import table_from_file
 
 
-class _Driver(ExternalDriver):
+class _Driver(adapter_base.ExternalDriver):
     def _inputfilename(self, system):
         return f"{system.name}.input.json"
 
@@ -16,7 +16,6 @@ class _Driver(ExternalDriver):
             json.dump(mock_adapter.input_script(self, system, **kwargs), f, indent=4)
 
         system.m.to_file('m0.hdf5')
-        self._write_info_json(system, **kwargs)
 
     def _call(self, system, runner, verbose=1, **kwargs):
         if runner is None:
