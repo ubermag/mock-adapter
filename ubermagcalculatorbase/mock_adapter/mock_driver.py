@@ -20,7 +20,7 @@ class _Driver(ExternalDriver):
 
     def _call(self, system, runner, verbose=1, **kwargs):
         if runner is None:
-            runner = mock_adapter.mock_runner.MockRunner()
+            runner = mock_adapter.mock_runner.MockCalculatorRunner()
         runner.call(
             argstr=self._inputfilename(system),
             verbose=verbose,
@@ -34,7 +34,7 @@ class _Driver(ExternalDriver):
         # Therefore, we return a Python comment that can be added to the
         # schedule script without breaking the execution.
         if runner is None:
-            runner = mock_adapter.MockRunner()
+            runner = mock_adapter.MockCalculatorRunner()
         return [
             "# calculator-specific setup, e.g. setting environment variables",
             "# " + runner._call(argstr=self._inputfilename(system), dry_run=True),

@@ -8,7 +8,10 @@ class ExternalRunner(abc.ABC):
     @property
     @abc.abstractmethod
     def package_name(self):
-        """Name of the external simulation package."""
+        """Name of the external simulation package.
+
+        This name is used in status information shown for running jobs.
+        """
 
     @abc.abstractmethod
     def _call(self, argstr, need_stderr, dry_run, **kwargs):
