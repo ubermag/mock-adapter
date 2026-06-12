@@ -38,6 +38,7 @@ class MyExternalDriver(ExternalDriver):
     def _write_input_files(self, system, **kwargs):
         with open(f"{system.name}.input", "w", encoding="utf-8") as f:
             f.write(str(-1))  # factor -1 used to invert magnetisation direction in call
+        self._write_info_json(system, **kwargs)
 
     def _call(self, system, runner, **kwargs):
         with open(f"{system.name}.input", encoding="utf-8") as f:
@@ -75,7 +76,7 @@ def test_external_driver(tmp_path):
     with open(tmp_path / system.name / "drive-0" / "info.json") as f:
         info = json.load(f)
 
-    assert info["adapter"] == "micromagneticmodel"
+    assert info["adapter"] == "test_driver_base"
     assert info["driver"] == "MyExternalDriver"
     assert info["drive_number"] == 0
 
