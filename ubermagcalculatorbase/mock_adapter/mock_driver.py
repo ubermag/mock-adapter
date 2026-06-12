@@ -50,7 +50,7 @@ class _Driver(ExternalDriver):
         system.m.array = df.Field.from_file(str(last_outpup_file)).array
 
         # update table information
-        system.table = table_from_file(f"{system.name}.odt", x=self._x)
+        system.table = table_from_file("output.csv", x=self._x)
 
 
 class MinDriver(_Driver):
