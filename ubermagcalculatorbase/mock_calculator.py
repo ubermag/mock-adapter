@@ -87,7 +87,7 @@ def fake_llg(config, path):
         precession_r = Rotation.from_rotvec(precession_rot_field.array.reshape((-1, 3)))
         m_new_array = precession_r.apply(m_new_array)
 
-        m.array = m_new_array.reshape((*m.mesh.n, 3))
+        m.array = df.Field(m.mesh, nvdim=3, value=m_new_array.reshape((*m.mesh.n, 3)), norm=m.norm)
         m.to_file(path / f'm_{i:06}.hdf5')
         update_table(path, i*dt, -1e-10 * i, m.orientation, alpha_factor, precession_angle)
         print(f"Step {i} finished")
