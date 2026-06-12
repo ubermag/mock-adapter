@@ -5,6 +5,7 @@ import discretisedfield as df
 from micromagneticmodel import adapter_base
 
 import mock_adapter
+import mock_adapter.scripts
 from mock_adapter.plugins import table_from_file
 
 
