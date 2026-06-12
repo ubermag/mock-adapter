@@ -13,7 +13,7 @@ class _Driver(adapter_base.ExternalDriver):
 
     def _write_input_files(self, system, **kwargs):
         with open(self._inputfilename(system), "w", encoding="utf-8") as f:
-            json.dump(mock_adapter.input_script(self, system, **kwargs), f, indent=4)
+            json.dump(mock_adapter.scripts.input_script(self, system, **kwargs), f, indent=4)
 
         system.m.to_file('m0.hdf5')
 
