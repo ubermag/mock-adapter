@@ -30,7 +30,7 @@
 
 `mock_adapter` is a Python package, integrated with Jupyter, providing:
 
-    - a reference implementation/template for writing adapter packages in Ubermag
+- a reference implementation/template for writing adapter packages in Ubermag
 
 - a mock_calculator that is use as calculator in the mock_adapter reference implementation
 
