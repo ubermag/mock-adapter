@@ -1,4 +1,4 @@
-# ubermagcalculatorbase
+# mock-adapter
 
 [Martin Lang](https://github.com/lang-m)<sup>1</sup>, [Samuel Holt](https://github.com/samjrholt)<sup>1,2</sup>, [Marijan Beg](https://github.com/marijanbeg)<sup>3,1</sup>, [Swapneel Amit Pathak](https://github.com/swapneelap)<sup>1,4</sup>, and [Hans Fangohr](https://github.com/fangohr)<sup>1,4,5</sup>
 
@@ -11,29 +11,28 @@
 
 | Description | Badge |
 | --- | --- |
-| Tests | [![Build status](https://github.com/ubermag/ubermagcalculatorbase/workflows/workflow/badge.svg)](https://github.com/ubermag/ubermagcalculatorbase/actions?query=workflow%3Aworkflow) |
-|       | [![conda](https://github.com/ubermag/ubermagcalculatorbase/workflows/conda/badge.svg)](https://github.com/ubermag/ubermagcalculatorbase/actions?query=workflow%3Aconda) |
-| Linting | [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/ubermag/ubermagcalculatorbase/master.svg)](https://results.pre-commit.ci/latest/github/ubermag/ubermagcalculatorbase/master) |
+| Tests | [![Build status](https://github.com/ubermag/mock-adapter/workflows/workflow/badge.svg)](https://github.com/ubermag/mock-adapter/actions?query=workflow%3Aworkflow) |
+|       | [![conda](https://github.com/ubermag/mock-adapter/workflows/conda/badge.svg)](https://github.com/ubermag/mock-adapter/actions?query=workflow%3Aconda) |
+| Linting | [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/ubermag/mock-adapter/master.svg)](https://results.pre-commit.ci/latest/github/ubermag/mock-adapter/master) |
 |         | [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) |
-| Releases | [![PyPI version](https://badge.fury.io/py/ubermagcalculatorbase.svg)](https://badge.fury.io/py/ubermagcalculatorbase) |
-|          | [![Anaconda-Server Badge](https://anaconda.org/conda-forge/ubermagcalculatorbase/badges/version.svg)](https://anaconda.org/conda-forge/ubermagcalculatorbase) |
-| Coverage | [![codecov](https://codecov.io/gh/ubermag/ubermagcalculatorbase/branch/master/graph/badge.svg?token=hcK4fofmrL)](https://codecov.io/gh/ubermag/ubermagcalculatorbase) |
-| Documentation | [![Documentation](https://img.shields.io/badge/Docs-ubermag.github.io-blue)](https://ubermag.github.io/documentation/ubermagcalculatorbase.html) |
+| Releases | [![PyPI version](https://badge.fury.io/py/mock-adapter.svg)](https://badge.fury.io/py/mock-adapter) |
+|          | [![Anaconda-Server Badge](https://anaconda.org/conda-forge/mock-adapter/badges/version.svg)](https://anaconda.org/conda-forge/mock-adapter) |
+| Coverage | [![codecov](https://codecov.io/gh/ubermag/mock-adapter/branch/master/graph/badge.svg?token=hcK4fofmrL)](https://codecov.io/gh/ubermag/mock-adapter) |
+| Documentation | [![Documentation](https://img.shields.io/badge/Docs-ubermag.github.io-blue)](https://ubermag.github.io/documentation/mock-adapter.html) |
 | YouTube | [![YouTube](https://img.shields.io/badge/YouTube-ubermag-blue)](https://www.youtube.com/channel/UC7MSqVQSMFV42R1jAYmKGLg) |
-| Binder | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ubermag/ubermagcalculatorbase/latest?urlpath=lab/tree/docs) |
-| Platforms | [![Platforms](https://anaconda.org/conda-forge/ubermagcalculatorbase/badges/platforms.svg)](https://anaconda.org/conda-forge/ubermagcalculatorbase) |
-| Downloads | [![Downloads](https://anaconda.org/conda-forge/ubermagcalculatorbase/badges/downloads.svg)](https://anaconda.org/conda-forge/ubermagcalculatorbase) |
+| Binder | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ubermag/mock-adapter/latest?urlpath=lab/tree/docs) |
+| Platforms | [![Platforms](https://anaconda.org/conda-forge/mock-adapter/badges/platforms.svg)](https://anaconda.org/conda-forge/mock-adapter) |
+| Downloads | [![Downloads](https://anaconda.org/conda-forge/mock-adapter/badges/downloads.svg)](https://anaconda.org/conda-forge/mock-adapter) |
 | License | [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause) |
 | DOI | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3539479.svg)](https://doi.org/10.5281/zenodo.3539479) |
 
 ## About
 
-`ubermagcalculatorbase` is a Python package, integrated with Jupyter, providing:
+`mock_adapter` is a Python package, integrated with Jupyter, providing:
 
-- Base classes for external calculator packages. Adapter packages must subclass these.
+    - a reference implementation/template for writing adapter packages in Ubermag
 
-- Mock calculator to (i) demonstrate how to write an adapter package, (ii) provide fake test data.
-
+- a mock_calculator that is use as calculator in the mock_adapter reference implementation
 
 
 It is available on Windows, MacOS, and Linux. It requires Python 3.8+.
@@ -75,7 +74,7 @@ Licensed under the BSD 3-Clause "New" or "Revised" License. For details, please 
 
 2. M. Beg, R. A. Pepper, and H. Fangohr. User interfaces for computational science: A domain specific language for OOMMF embedded in Python. [*AIP Advances* **7**, 56025](http://aip.scitation.org/doi/10.1063/1.4977225) (2017).
 
-3. Martin Lang, Samuel Holt, Marijan Beg, Swapneel Amit Pathak, and Hans Fangohr. ubermagcalculatorbase: Base class for external calculators and mock calculator DOI: [10.5281/zenodo.3539479](http://doi.org/10.5281/zenodo.3539479) (2024).
+3. Martin Lang, Samuel Holt, Marijan Beg, Swapneel Amit Pathak, and Hans Fangohr. mock-adapter: Base class for external calculators and mock calculator DOI: [10.5281/zenodo.3539479](http://doi.org/10.5281/zenodo.3539479) (2024).
 
 ## Acknowledgements
 

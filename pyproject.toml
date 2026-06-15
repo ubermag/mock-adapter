@@ -116,8 +116,8 @@ copyright_holder = "Ubermag developers"
 contributors = [
 ]
 about = """
-- Base classes for external calculator packages. Adapter packages must subclass these.
+- a reference implementation/template for writing adapter packages in Ubermag
 
-- Mock calculator to (i) demonstrate how to write an adapter package, (ii) provide fake test data.
+- a mock_calculator that is use as calculator in the mock_adapter reference implementation
 
 """
