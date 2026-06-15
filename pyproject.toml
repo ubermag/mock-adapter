@@ -105,8 +105,8 @@ filterwarnings = [
     "ignore:((.|\n)*)Sentinel is not a public part of the traitlets API((.|\n)*)",  # dependency of k3d
 ]
 
-[tool.setuptools.packages.find]
-include = ["mock_adapter"]
+#[tool.setuptools.packages.find]
+#include = ["mock_adapter"]
 
 # to define additional information we use a custom table
 # see: https://www.python.org/dev/peps/pep-0518/#tool-table

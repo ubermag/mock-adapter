@@ -31,7 +31,7 @@ def unittest(c):
 @task
 def coverage(c):
     """Run unittests with coverage."""
-    result = pytest.main(["-v", "--cov", "mock_adapter", "--cov-report", "xml"])
+    result = pytest.main(["-v", "--cov", "src/mock_adapter", "--cov-report", "xml"])
     raise Exit(code=result)
 
 
@@ -39,7 +39,13 @@ def coverage(c):
 def docs(c):
     """Run doctests."""
     result = pytest.main(
-        ["-v", "--doctest-modules", "--ignore", "mock_adapter/tests", "mock_adapter"]
+        [
+            "-v",
+            "--doctest-modules",
+            "--ignore",
+            "src/mock_adapter/tests",
+            "mock_adapter",
+        ]
     )
     raise Exit(code=result)
 
