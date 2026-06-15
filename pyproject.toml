@@ -67,7 +67,6 @@ mock_adapter = "mock_adapter.plugins.read_table:table_from_file"
 omit = ["mock_adapter/tests/*"]
 
 [tool.ruff.lint]
-ignore-init-module-imports = true  # do not remove unused imports in __init__ and warn instead
 select = [
     "B",   # flake8-bugbear
     "E",   # pycodestyle
