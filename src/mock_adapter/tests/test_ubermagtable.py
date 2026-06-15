@@ -7,28 +7,28 @@ from mock_adapter.plugins import table_from_file
 
 
 def _table_energy_minimisation_factory(base_path):
-    def _inner(*, table_kwargs=None, **kwargs):
+    def _inner(**kwargs):
+        # in this implementation we compute table data on the fly; for more expensive
+        # calculations pre-computed test samples can be committed
         system = mm.examples.macrospin()
         md = mock_adapter.MinDriver()
         md.drive(system, dirname=base_path)
 
-        table_kwargs = table_kwargs or {}
         return table_from_file(
-            base_path / system.name / "drive-0" / "output.csv", **table_kwargs, **kwargs
+            base_path / system.name / "drive-0" / "output.csv", **kwargs
         )
 
     return _inner
 
 
 def _table_llg_factory(base_path):
-    def _inner(*, table_kwargs=None, **kwargs):
+    def _inner(**kwargs):
         system = mm.examples.macrospin()
         td = mock_adapter.TimeDriver()
         td.drive(system, t=25e-12, n=10, dirname=base_path)
 
-        table_kwargs = table_kwargs or {}
         return table_from_file(
-            base_path / system.name / "drive-0" / "output.csv", **table_kwargs, **kwargs
+            base_path / system.name / "drive-0" / "output.csv", **kwargs
         )
 
     return _inner
