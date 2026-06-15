@@ -43,10 +43,7 @@ def test_min_schedule(system, tmp_path):
     md.schedule(system, dirname=tmp_path, cmd="python", header="#SBATCH --time 1:00")
 
     job_script = (tmp_path / system.name / "drive-0" / "job.sh").read_text()
-    assert (
-        f"{sys.executable} -m mock_adapter.mock_calculator {system.name}.input.json"
-        in job_script
-    )
+    assert f"{sys.executable} -m mock_calculator {system.name}.input.json" in job_script
 
     assert (
         '"mode": "min"'
@@ -66,10 +63,7 @@ def test_time_schedule(system, tmp_path):
     )
 
     job_script = (tmp_path / system.name / "drive-0" / "job.sh").read_text()
-    assert (
-        f"{sys.executable} -m mock_adapter.mock_calculator {system.name}.input.json"
-        in job_script
-    )
+    assert f"{sys.executable} -m mock_calculator {system.name}.input.json" in job_script
 
     assert (
         '"mode": "llg"'
