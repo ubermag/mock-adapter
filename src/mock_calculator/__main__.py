@@ -30,14 +30,7 @@ def init_table(
 
 
 def update_table(path, iteration, energy, m, *extra_columns):
-    data = [
-        iteration,
-        energy,
-        float(m.x.mean()),
-        float(m.y.mean()),
-        float(m.z.mean()),
-        *extra_columns,
-    ]
+    data = [iteration, energy, *m.mean(), *extra_columns]
     with open(path / TABLE_NAME, "a") as f:
         f.write(",".join(map(str, data)) + "\n")
 
