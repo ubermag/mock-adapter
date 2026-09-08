@@ -44,7 +44,7 @@ def docs(c):
             "--doctest-modules",
             "--ignore",
             "src/mock_adapter/tests",
-            "mock_adapter",
+            "src/mock_adapter",
         ]
     )
     raise Exit(code=result)
