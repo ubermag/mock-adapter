@@ -1,3 +1,4 @@
+import discretisedfield as df
 import micromagneticdata as mdata
 import micromagneticmodel as mm
 import pytest
@@ -39,3 +40,8 @@ def drive_with_reference(_compute_drive):
 def drive(_compute_drive):
     name, number, dirname, _ = _compute_drive
     return mdata.Drive(name, number, dirname)
+
+
+@pytest.fixture
+def expected_field_type():
+    return df.Field
