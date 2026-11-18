@@ -1,3 +1,4 @@
+import discretisedfield as df
 import micromagneticdata as mdata
 
 
@@ -31,3 +32,6 @@ class MockCalculatorDrive(mdata.Drive):
             f"{self.__class__.__name__}(name='{self.name}', number={self.number}, "
             f"dirname='{self.dirname}', x='{self.x}')"
         )
+
+    def _read_m(self, filename):
+        return df.Field.from_file(filename)
