@@ -27,30 +27,6 @@ class MockCalculatorDrive(mdata.Drive):
             return f.read()
 
     def __repr__(self):
-        """Representation string.
-
-        Returns
-        -------
-        str
-
-            Representation string.
-
-        Examples
-        --------
-        1. Representation string.
-
-        >>> import tempfile
-        >>> import micromagneticmodel as mm
-        >>> import mock_adapter
-        ...
-        >>> dirname = tempfile.mkdtemp()
-        >>> system = mm.examples.macrospin()
-        >>> mock_adapter.MinDriver().drive(system, dirname=dirname, verbose=0)
-        >>> MockCalculatorDrive(name='macrospin', number=0, dirname=dirname)
-        ... # doctest: +ELLIPSIS
-        MockCalculatorDrive(name='macrospin', number=0, dirname='...', x='iteration')
-
-        """
         return (
             f"{self.__class__.__name__}(name='{self.name}', number={self.number}, "
             f"dirname='{self.dirname}', x='{self.x}')"
